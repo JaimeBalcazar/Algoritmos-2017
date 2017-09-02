@@ -1,0 +1,49 @@
+// sueldos.cpp : Defines the entry point for the console application.
+
+//
+
+#include "stdafx.h"
+
+#include "stdio.h"
+
+#include "conio.h"
+
+#include <iostream>
+
+using namespace std;
+
+void main()
+
+{int N,sueldo,S=0;
+
+cout<<"Ingrese el numero de empleados:";
+
+cin>>N;
+
+for(int i=0;i<N;i++)
+
+{cout<<"El empleado"<< i+1 <<"gana:";
+
+cin>>sueldo;
+
+if(sueldo>4000)
+
+{sueldo=sueldo-(sueldo*0.13)-(sueldo*0.121);
+
+}
+
+else
+
+{sueldo=sueldo-(sueldo*0.121);
+
+}
+
+S=S+sueldo;
+
+}
+
+cout<<"La planilla es de:"<<S;
+
+getch();
+
+}
