@@ -1,0 +1,143 @@
+// tarea.cpp : Defines the entry point for the console application.
+//REALIZADO POR: Jaime Balcazar Parada Reg.2016114410
+
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+#include "math.h"
+#include <string>
+#include "stdlib.h"
+#define MAX 100
+
+using namespace std;
+
+float area_triangulo(float a,float b,float c);
+void llenarvec (float V[], int N);
+void promedios (float V[], int N,float P[]);
+void palindromo(string var2);
+
+
+
+
+void main()
+{int op,N;
+ float area,a,b,c,V[MAX],B[MAX],P[MAX];
+ string palabra;
+ double prom;
+
+do
+{
+cout<< "----------------MENU------------------------OPCION---"<<endl;
+cout<< "Funcion del triangulo--------------------------1-----"<<endl;
+cout<< "Ejercicio del vector---------------------------2-----"<<endl;
+cout<< "Palindromo-------------------------------------3-----"<<endl;
+cout<< "Salir------------------------------------------0-----"<<endl;
+
+cout <<endl;
+cout << "Ingrese la opcion:";
+cin>>op;
+cout<<endl;
+
+switch(op)
+{case 1:
+    {cout<< "Ingrese el lado a:";
+     cin>>a;
+     cout<< "Ingrese el lado b:";
+     cin>>b;
+     cout<< "Ingrese el lado c:";
+     cin>>c;
+     area=area_triangulo(a,b,c);
+	 cout<<endl;
+     cout<<"El area del triangulo es de:"<<area;
+	 cout<<endl;
+	 cout<<endl;
+	 cout<<endl;
+     break;
+    }
+ case 2:
+    {do
+        {cout<<"Ingrese el limite:";
+         cin>>N;
+        }while(N<3||N>MAX );
+		cout<<endl;
+        llenarvec (V, N);
+		cout<<endl;
+        promedios (V,N,P);
+        for(int i=0;i<(N-2);i++)
+        cout<<"el promedio de :" <<V[i]<<"+"<<V[i+1]<<"+"<<V[i+2]<<"= "<<P[i]<<endl;
+		cout<<endl;
+		cout<<endl;
+		break; 
+	}
+         
+ case 3:
+    {
+	 getline(cin, palabra);
+     palindromo(palabra);
+     break;
+    }
+ case 0:
+    {cout<<"Salir"<<endl;
+     break;
+    }
+ default:
+    {cout<< "Opcion Invalida"<<endl;
+     break;
+    }
+}
+}while(op!=0);
+
+
+ getch();
+}
+
+
+float area_triangulo(float a,float b,float c)
+{float area;
+ area=(sqrt((a+b+c)*(a+b-c)*(b+c-a)*(c+a-b)))/4;
+ return area;
+}
+
+
+void llenarvec (float V[], int N)
+{int i;
+for( i=0;i<N; i++)
+ {cout<<"vec["<<i<<"]=";
+ cin>>V[i];
+ }
+}
+void promedios (float V[], int N,float P[])
+{int j=0;
+    for(int i=0;i<(N-2);i++)
+    {
+    P[i]=(V[j]+V[j+1]+V[j+2])/3;
+    j=j+1;}
+}
+    
+
+void palindromo(string var2)
+{  int longitud,aux;
+    string palabra;
+  
+                cout<<"Ingrese una palabra: ";
+                getline(cin,palabra);
+				cout<<endl;
+                var2=palabra;
+                longitud=palabra.length();
+                for(int i=0;i<longitud/2;i++)
+                {aux=palabra[i];
+                 palabra[i]=palabra[longitud-1-i];
+                 palabra[longitud-1-i]=aux;
+                }
+                cout<<"El nombre invertido es: "<<palabra<<endl;
+				cout<<endl;
+                if(var2.compare(palabra)==0)
+                    {cout<<"Es un palindromo"<<endl;
+					 cout<<endl;
+					}
+                else
+					{
+                    cout<<"No es un palindromo"<<endl;
+					cout<<endl;
+					}	
+}
