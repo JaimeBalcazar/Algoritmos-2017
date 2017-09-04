@@ -1,47 +1,52 @@
 #include "stdafx.h"
 #include <iostream>
 #include "conio.h"
-//#include "stdlib.h"
-
+#include "math.h"
+#include "stdio.h"
 
 using namespace std;
 
-void Leer1(float *A, float* B, float *C);
-void Leer2(float *D, float *E, float *F);
-void Solucion1(float *A, float *B, float *C, float *D, float *E, float *F, float *X, float *Y);
-
-
 void main()
-{float A,B,C,D,E,F,X,Y;
-Leer1(&A,&B,&C);
-Leer2(&D,&E,&F);
-Solucion1(&A,&B,&C,&D,&E,&F,&X,&Y);
-_getch();
-}
+{float a,b,c,d,x1,x2;
 
+ cout<<"Ingrese a:";
+ cin>>a;
+ cout<<"Ingrese b:";
+ cin>>b;
+ cout<<"Ingrese c:";
+ cin>>c;
+ d=(b*b)-(4*a*c);
+ cout<<endl;
+ cout<<"El determinante es:"<<d;
+  cout<<endl;
 
-void Leer1(float *A, float* B, float *C)
-{ do
-	{cout<<"\n Ingrese el valor de A!= 0: ";
-	 cin>> *A;
-	}while (*A == 0);
-cout<<"\n Ingrese el valor de B y C: ";
-cin>> *B >> *C;
-}
+ if(d==0)
+ { cout<<endl;
+  cout<<"Solucion unica"<<endl;
+  x1=(-b)/(2*a);
+  cout<<"El resultado es:"<<x1;
+  cout<<endl;
+ }
+ if(d>0)
+ {cout<<endl;
+  cout<<"Solucion con dos valores para x"<<endl;
+  x1=(-b+sqrt(d))/(2*a);
+  x2=(-b-sqrt(d))/(2*a);
+  cout<<"El primer resultado es:"<<x1;
+  cout<<endl;
+  cout<<"El segundo resultado es:"<<x2;
+  cout<<endl;
+ }
+ if(d<0)
+ {cout<<endl;
+  cout<<"Solucion imaginaria"<<endl;
+  x1=(-b/2*a)+(sqrt(-d))/(2*a);
+  x2=(-b/2*a)-(sqrt(-d))/(2*a);
+  cout<<"El primer resultado imaginario es:"<<x1;
+  cout<<endl;
+  cout<<"El segundo resultado imaginario es:"<<x2;
+  cout<<endl;
+ }
 
-
-void Leer2(float *D, float *E, float *F)
-{ do
-	{cout<<"\n Ingrese el valor de D!= 0: ";
-	 cin>> *D;
-	}while (*D == 0);
-cout<<"\n Ingrese el valor de E y F: ";
-cin>>*E>>*F;
-}
-
-void Solucion1(float *A, float *B, float *C, float *D, float *E, float *F, float *X, float *Y)
-{ *Y = ((*A * *F) - (*D * *C)) / ((*A * *E) - (*D * *B));
-  *X = (*C - *B * *Y)/ *A;
-  cout<<"\n El valor de X es igual a "<< *X;
-  cout<<"\n El valor de Y es igual a "<< *Y;
+getch();
 }
