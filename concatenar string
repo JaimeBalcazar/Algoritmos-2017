@@ -1,0 +1,35 @@
+#include "stdafx.h"
+#include <iostream>
+#include "conio.h"
+#include "stdio.h"
+#include <string>
+
+using namespace std;
+
+string concatenar(string var1,string var2);
+
+
+void main()
+{int opcion;
+ string var1,var2,var3;
+
+
+cout<<"Ingrese el nombre"<<endl;
+cin>>var1;
+cout<<"Ingrese el apellido"<<endl;
+cin>>var2;
+var3=concatenar(var1,var2);
+cout<<"Concatenando:";
+cout<<var3;
+cout<<endl;
+
+getch();
+}
+
+
+string concatenar(string var1,string var2)
+{string var3;
+ var3=var1+' '+var2;
+ return var3;
+}
+
