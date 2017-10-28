@@ -1,0 +1,126 @@
+// ejemplomatrizstruc.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include <iostream>
+#include <string>
+#include "conio.h"
+#define MAX 10
+
+using namespace std;
+
+ struct t_producto{
+	 int idproducto;
+	 string descripcion;
+	 int cantidad;
+	 float costo;
+	 float precio;
+	 int estado;
+ };
+ t_producto MAT [MAX][MAX];
+ void cargar (int n,int m);
+ void mostrar (int n, int m);
+ void eliminar(int n,int m,int dato);
+ void main ()
+ {int n,m,CONTI,op;
+
+     cout<<"ingrese las columnas";
+	 cin>>n;
+	 cout<<"Ingrese las filas";
+	 cin>>m;
+	 
+	
+ do
+ {
+	 cout<<"----------MENU------------"<<endl;
+	 cout<<"1.Cargar Matriz"<<endl;
+	 cout<<"2.Mostrar Matriz"<<endl;
+	 cout<<"3.Ordenar Matriz"<<endl;
+	 cout<<"4.Eliminar Matriz"<<endl;
+	 cout<<"5.Modificar Matriz"<<endl;
+	 cout<<"6.Consultar Matriz"<<endl;
+	 cout<<"7.Promedio Almacen"<<endl;
+	 cout<<"0.Salir"<<endl;
+	 
+	 cout<<"Ingrese la opcion";
+	 cin>>op;
+
+ switch (op)
+ {case 1:
+  cargar(n,m);
+  break;
+  case 2:
+  break;
+  case 3:
+  break;
+  case 4:
+  break;
+  case 5:
+  break;
+  case 6:
+  break;
+  case 7:
+  break;
+  case 0:
+	  cout<<"Error";
+  break;
+  default:
+	  cout<<"Error";
+	  break;
+
+ 
+ }
+
+
+
+ }while(CONTI!=0);
+	 getch();
+ }
+
+
+ void cargar (int n,int m)
+ {for(int i=0;i<n;i++)
+   for(int j=0;i<m;i++)
+	   {cout<<"ingrese la matriz";
+        cin>>MAT[i][j].idproducto;
+		cin.ignore();
+		getline(cin,MAT[i][j].descripcion);
+		cin>>MAT[i][j].cantidad;
+		cin>>MAT[i][j].costo;
+		cin>>MAT[i][j].precio;
+		MAT[i][j].estado=0;
+       }
+
+ }
+
+ void mostrar (int n, int m)
+ {
+	 for(int i=0; i<n; i++)
+		 for(int j=0; j<m; j++)
+		 {
+			 if(MAT[i][j].estado==0)
+			 {
+			 cout<<MAT[i][j].idproducto<<"\t";
+			 cout<<MAT[i][j].descripcion<<"\t";
+			 cout<<MAT[i][j].cantidad<<"\t";
+			 cout<<MAT[i][j].costo<<"\t";
+			 cout<<MAT[i][j].precio<<endl;
+			 }
+		 }
+ }
+
+
+
+ void eliminar(int n,int m,int dato)
+ {bool band=true;
+   for(int i=0; i<n; i++)
+		 for(int j=0; j<m; j++)
+		 {if(MAT[i][j].idproducto==dato)
+		 {MAT[i][j].estado=9;
+			band=false;
+		}
+		 }
+    if(band!=false)
+		cout<<"ELEMENTO NO ENCONTRADO"<<endl;
+ }
+
