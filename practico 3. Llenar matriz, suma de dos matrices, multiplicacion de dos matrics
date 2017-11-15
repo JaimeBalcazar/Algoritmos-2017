@@ -1,0 +1,83 @@
+// llenar matriz.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include <string>
+#include <iostream>
+#include "stdio.h"
+#include "conio.h"
+#define MAX 50
+
+using namespace std;
+
+
+void cargarmatriz(int n,int m,int MAT[MAX][MAX]);
+void mostrarmatriz(int n,int m,int MAT[MAX][MAX]);
+void suma(int MAT[MAX][MAX],int MAT2[MAX][MAX],int n,int m,int SUMA[MAX][MAX]);
+void multiplicacion(int MAT[MAX][MAX],int MAT2[MAX][MAX],int n,int m, int MULTI[MAX][MAX]);
+
+void main()
+{int m,n,MAT[MAX][MAX],MAT2[MAX][MAX],SUMA[MAX][MAX],MULTI[MAX][MAX];
+
+	cout<<"Ingrese las filas:";
+	cin>>m;
+	cout<<"Ingrese las columnas:";
+	cin>>n;
+
+	cargarmatriz(n,m,MAT);
+	mostrarmatriz(n,m,MAT);
+	cout<<endl;
+	cargarmatriz(n,m,MAT2);
+	mostrarmatriz(n,m,MAT2);
+	cout<<endl;
+	cout<<"La suma de la matriz1 y la matriz 2 es de:"<<endl;
+	suma(MAT,MAT2,n,m,SUMA);
+	mostrarmatriz(n,m,SUMA);
+	cout<<endl;
+	cout<<"La multiplicacion de la matriz1 y la matriz 2 es de:"<<endl;
+	multiplicacion(MAT,MAT2,n,m,MULTI);
+	mostrarmatriz(n,m,MULTI);
+
+
+
+	getch();
+
+}
+
+void cargarmatriz(int n,int m,int MAT[MAX][MAX])
+{
+ for(int i=0;i<n;i++)
+	 for(int j=0;j<m;j++)
+	 {   cout<<"MAT["<<i+1<<"]["<<j+1<<"]:";
+		 cin>>MAT[i][j];
+	 }
+}
+
+void mostrarmatriz(int n,int m,int MAT[MAX][MAX])
+{
+ for(int i=0;i<n;i++)
+	{cout<<endl;
+	 for(int j=0;j<m;j++)
+	 {  cout<<MAT[i][j]<<"\t";
+	 }
+    }
+
+}
+
+void suma(int MAT[MAX][MAX],int MAT2[MAX][MAX],int n,int m,int SUMA[MAX][MAX])
+{
+	for(int i=0;i<n;i++)
+		for(int j=0;j<m;j++)
+		{SUMA[i][j]=MAT[i][j]+MAT2[i][j];
+}
+}
+
+void multiplicacion(int MAT[MAX][MAX],int MAT2[MAX][MAX],int n,int m, int MULTI[MAX][MAX])
+{int i=0,j=0;
+	 for(int i=0;i<n;i++)
+		for(int j=0;j<m;j++)
+		{cout<<endl;
+	     for(int k=0;k<n;k++)
+		 MULTI[i][j]=MAT[i][k]*MAT2[k][j];
+	    }
+	}
